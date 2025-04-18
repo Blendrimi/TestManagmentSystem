@@ -1,0 +1,14 @@
+Ne tabelen e PurchaseOrder duhet te shtohen edhe keto kolona:
+
+PrepraredBy useri dmth e tipit string
+PreparedDate DATETIME
+ApprouvedBY useri dmth e tipit string
+ApprouvedDate Datetime
+TotalBasixPrice decimal
+TotalInputTax (default 0)
+TotalValue decimal
+
+
+Tabeles EUCSP_Municipality ti shtohet edhe ni kolone e re SerbianName
+
+tek tabela MIG_Village te shtohet fusha SerbianName

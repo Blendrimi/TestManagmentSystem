@@ -1,0 +1,47 @@
+﻿{
+   "ContextClassName": "OfferandinvoicedbContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "IncludeConnectionString": true,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": null,
+   "ProjectRootNamespace": "Connection",
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[AddServices]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Customers]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[ProjectDetails]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[ServiceDescription]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Services]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[TypeOfReport]"
+      }
+   ],
+   "UseDatabaseNames": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseNodaTime": false,
+   "UseSpatial": false,
+   "UseStoredProcedures": false
+}

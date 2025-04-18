@@ -1,0 +1,22 @@
+1.Te gjenden te gjitha pagat ne nivel te qyteteve.
+Pra duhet te gjeni per cdo qytet sa paga duhet te dergoj postieri.
+
+3.Te shfaqet Emri,Mbiemri (i punetorit), Emri i Qytetit,Profesioni
+per te gjithe ata punetore qe vijne prej qyteteve me me shume 50.000 banore
+
+4.Te shfaqen te gjitha profesionet dhe per secilin profesion numeroni se sa 
+ punetore jane me ate profesion.
+
+5.Shaqeni Emrin, mbiemrin dhe pagen e punetorit si dhe duke shfrytezuar funksionin CASE
+  shfaqeni ndonjeren nga keto kategori:
+  'A' - nese paga eshte me e e vogel ose barabart se 500 euro
+  'B' - nese paga eshte mes 501 dhe 1000 euro
+  'C' - nese paga eshte me e madhe se 1000 euro
+
+6.Krijoni nje funksion i cili merre si parameter pagen bruto te puentorit dhe Tatimin
+ dhe me pas kthen pagen NETO tetij.
+
+psh nese paga bruto eshte 1000 euro dhe tatimi 20% funksioni duhet te kthej
+pagen neto 800 euro (sepse 20% shkon ne tatim)
+
+7.

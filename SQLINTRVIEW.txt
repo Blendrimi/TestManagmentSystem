@@ -1,0 +1,30 @@
+1.DATABAZA, SQL MANAGEMENT STUDIO, SQL QUERRY (dallimi mes tyre)
+2.TIPET E TE DHENAVE
+3.PRIMARY KEY, (Natyral Key dhe SorrgateKEy)
+4.LIDHJET NE MES TABELAVE
+5. Forign Key
+6. JOINS (INNER,LEFT,OUTER)
+7.STORED PROCEDURA
+8.VIEWS
+
+
+10.INDEKSIMI
+
+--------------------------
+
+
+
+CREATE  TRIGGER SendSmsAfterinsert
+   ON Notat
+   AFTER INSERT  
+AS   
+BEGIN  
+ Declare @studentId int  
+  SELECT @studentId = Id from inserted  
+  insert into SmsMesazhet values(@studentId,'Nota u ruajt me sukses',GETDATE())
+END   
+---------------------------------------------------------------
+
+
+CREATE INDEX idx_City
+ON Student (LastName);

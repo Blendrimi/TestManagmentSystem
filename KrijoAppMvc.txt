@@ -1,0 +1,101 @@
+1.Kontrollo versionin e Visual studio 2022 (Tools > Get Tools and Features) 
+  pastaj kontrollo nese e ke te instaluar paketen:.NET Framework project and item templates
+
+2. Krijo Projektin ne MVC me (.NET FRAMEWORK) mos harro auth type Individual
+
+3.Nderro Connection String ne Web config
+
+ <connectionStrings>
+		<add name="DefaultConnection" connectionString="Server=LENOVO\RESHAT;Initial Catalog=UniversumTest;Persist Security Info=False;Integrated Security=True" providerName="System.Data.SqlClient" />
+	</connectionStrings>
+
+4.Ben Connection me db me ane te urdherave"
+ 
+  a)Enable-Migrations
+  b)Add-Migration VersoniX
+  c)Update-database
+
+5.Kontrollo se a jane krijuar tabelat e autentifikimit ne Databaze
+
+6.Krijo nje User Test pasi qe ta kesh lidhur aplikacionin me DB
+
+7. Shto fushat Shtese ne IdentityModel 
+          [Required]
+        public int UserId { get; set; }
+        public DateTime InsertedOn { get; set; }
+
+8.Ne folderin Models tek Account ViewModel metoda  RegisterViewModel shto fushat e Regjistrimit ne detaje si:
+
+        [Required]
+        [Display(Name = "StudentId")]
+        public int StudentId { get; set; }
+
+9. Tek Account Controlleri metoda Register shtohet ky rresht
+    var user = new ApplicationUser 
+              var user = new ApplicationUser 
+                { UserName = model.Email,
+                    Email = model.Email ,
+                    UserId=model.StudentId,
+                    InsertedOn=DateTime.Now.Date
+
+                };
+10. Ne register.html tek View shto kete pjese 
+    <div class="form-group">
+        @Html.LabelFor(m => m.StudentId, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.StudentId, new { @class = "form-control" })
+        </div>
+    </div>
+
+-----PJESA e ROLIT-----------
+
+11. Tek Klasa AccountViewModel tek metoda  RegisterViewModel e shton propertine e Rolit
+
+  public int Role { get; set; }
+
+12. Ne View Register.html e shton kete pjese
+
+  <div class="form-group">
+        @Html.LabelFor(m => m.Role, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+
+            @Html.DropDownListFor(model => model.Role,
+                    new List<SelectListItem> {
+                         new SelectListItem { Value = "1" , Text = "Admin" },
+                         new SelectListItem { Value = "2" , Text = "Student" },
+                          new SelectListItem { Value = "3" , Text = "Profesor" },
+
+                      },
+                    new { @class = "col-md-2 control-label" })
+        </div>
+    </div>
+
+13.Ne accountController e shton pjesen e rolit tek Metoda Register pas pjeses 
+  if (result.Succeeded)
+e shton kete pjese:
+                  UserManager.AddToRole(user.Id, GenerateRole(model.Role));
+Ku metoda GenerateRole eshte kjo:
+
+  private string GenerateRole(int role)
+        {
+            string finalrole = "";
+            if (role == 1)
+            {
+                finalrole = "Admin";
+            }
+            else if (role == 2)
+            {
+                finalrole = "Student";
+            }
+            else
+            {
+                finalrole = "Profesor";
+            }
+            return finalrole;
+        }
+
+--------------Menaxhimi i userave---------------------
+
+14. Shtojme kontrollerin UserController tek pjesa e folderit Controller
+
+ 

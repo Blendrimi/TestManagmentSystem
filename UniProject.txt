@@ -1,0 +1,12 @@
+useradmin@gmail.com   Kosova123???
+usersimple@gmail.com   Kosova123???
+
+
+<connectionStrings>
+		<add name="DefaultConnection" connectionString="Server=LENOVO\RESHAT;Initial Catalog=ElectroWebProject;Persist Security Info=False;Integrated Security=True" providerName="System.Data.SqlClient" />
+	</connectionStrings>
+
+
+  a)Enable-Migrations
+  b)Add-Migration VersoniX
+  c)Update-database

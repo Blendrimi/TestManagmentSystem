@@ -1,0 +1,128 @@
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace Controllers
+{
+    [Authorize]
+    public class UserController : Controller
+    {
+        // GET: User
+
+        private ApplicationDbContext context;
+
+        public UserController()
+        {
+            context = new ApplicationDbContext();
+        }
+        public ActionResult Index()
+        {
+
+            var user = User.Identity;
+            var userStore = new UserStore<ApplicationUser>(context);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+            if (userManager.IsInRole(user.GetUserId(), "Administrator"))
+            {
+                var userlist = context.Users.ToList();
+                List<UsersVm> lista = new List<UsersVm>();
+
+                foreach (var item in userlist)
+                {
+                    var obj = new UsersVm();
+                    obj.UserId = item.Id;
+                    obj.BirthDate = item.BirthDate;
+                    obj.UserName = item.UserName;
+                    obj.FirstName = item.FirstName;
+                    obj.LastName = item.LastName;
+                    obj.Phone = item.PhoneNumber;
+                    obj.Active = item.LockoutEnabled;
+                    obj.Email = item.Email;
+
+
+
+                    lista.Add(obj);
+
+
+                }
+
+
+
+                return View(lista);
+
+
+            }
+            else
+            {
+                return RedirectToAction("Index", "Error");
+            }
+
+
+
+        }
+
+        public ActionResult RemoveUser(string Id)
+        {
+            var user = User.Identity;
+            var userStore = new UserStore<ApplicationUser>(context);
+            var userManager = new UserManager<ApplicationUser>(userStore);
+            if (userManager.IsInRole(user.GetUserId(), "Administrator"))
+            {
+                var userfromdb = context.Users.Where(x => x.Id == Id).SingleOrDefault();
+                context.Users.Remove(userfromdb);
+                context.SaveChanges();
+
+                return RedirectToAction("Index");
+
+
+            }
+            else
+            {
+                return RedirectToAction("Index", "Error");
+            }
+
+        }
+
+        public ActionResult GotoEditUser(string Id)
+        {
+            var obj = context.Users.Where(x => x.Id == Id).SingleOrDefault();
+
+            var u = new UsersVm();
+            u.UserId = obj.Id;
+            u.BirthDate = obj.BirthDate;
+            u.UserName = obj.UserName;
+            u.FirstName = obj.FirstName;
+            u.LastName = obj.LastName;
+            u.Phone = obj.PhoneNumber;
+            u.Active = obj.LockoutEnabled;
+
+            return View(u);
+        }
+
+        public ActionResult EditUser(UsersVm u)
+        {
+            var obj = context.Users.Where(x => x.Id == u.UserId).SingleOrDefault();
+
+            obj.FirstName = u.FirstName;
+            obj.LastName = u.LastName;
+            obj.BirthDate = u.BirthDate;
+            obj.PhoneNumber = u.Phone;
+            obj.LockoutEnabled = u.Active;
+
+            context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+        //public ActionResult GoToChangePassword(string Id) 
+        //{
+        //    var email = context.Users.Where(x => x.Id == Id).Select(x=>x.Email).SingleOrDefault();
+        //    ResetPasswordViewModel a = new ResetPasswordViewModel();
+        //    a.Email = email;
+
+        //    return View(a);
+        //}
+    }
+}

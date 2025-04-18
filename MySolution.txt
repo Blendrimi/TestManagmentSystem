@@ -1,0 +1,78 @@
+
+
+
+namespace ConsoleApp3
+{
+	using System;
+	using System.Collections.Generic;
+    using System.Linq;
+
+    public static class Solution
+	{
+		public static string ArrayChallage(string [] strArr)
+        {
+			string firstword = strArr[0];
+			char [] firstwordsplited = firstword.ToCharArray();
+            //HashSet<char> hash = new HashSet<char>();
+
+			string temoword = "";
+            string final1 = "";
+            string final2 = "";
+           // int j = 0;
+
+            for (int i = 0; i < firstwordsplited.Length; i++)
+            {
+				temoword = temoword + firstwordsplited[i];
+				if(Checkifstringisinarray(temoword, strArr))
+                {
+                    string tempsecondword = FindTempSecondword(i+1, firstwordsplited);
+                    if(Checkifstringisinarray(tempsecondword, strArr))
+                    {
+                        final1 = temoword;
+                        final2 = tempsecondword;
+                        
+                        break;
+                    }
+                   
+                }
+
+
+			}
+
+          
+
+
+			return final1+ ","+ final2;
+        }
+
+        private static string FindTempSecondword(int j, char[] firstwordsplited)
+        {
+
+            string final2 = "";
+            for (int k = j; k < firstwordsplited.Length; k++)
+            {
+                final2 +=  firstwordsplited[k];
+            }
+
+            return final2;
+        }
+
+       
+
+        private static bool Checkifstringisinarray(string word, string[] strArr)
+        {
+            bool rez = false;
+            foreach (string x in strArr)
+            {
+                if (x.Equals(word) && x.Length>1 )
+                {
+                    rez = true;
+                }
+            }
+            return rez;
+        }
+    }
+
+
+
+}
