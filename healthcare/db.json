@@ -1,0 +1,68 @@
+{
+  "doctors": [
+    {
+      "name": "Elira",
+      "surname": "Dervishi",
+      "age": 38,
+      "specialty": "Neurologyy",
+      "experience": 13,
+      "id": "2"
+    },
+    {
+      "id": "bc65",
+      "name": "asdasd",
+      "surname": "asdsad",
+      "age": 22,
+      "specialty": "asdsa",
+      "experience": 22
+    },
+    {
+      "id": "ca2b",
+      "name": "asdsa",
+      "surname": "adsa",
+      "age": 22,
+      "specialty": "asdsa",
+      "experience": 555555
+    }
+  ],
+  "patients": [
+    {
+      "name": "Filan1",
+      "surname": "Fisteku",
+      "age": 66,
+      "doctorId": 2,
+      "diagnosisId": 3,
+      "id": "1"
+    },
+    {
+      "name": "Filan2",
+      "surname": "Fisteku",
+      "age": 45,
+      "doctorId": null,
+      "diagnosisId": 2,
+      "id": "2"
+    }
+  ],
+  "diagnoses": [
+    {
+      "id": "1",
+      "name": "Diabetes"
+    },
+    {
+      "id": "2",
+      "name": "Hypertension"
+    },
+    {
+      "id": "3",
+      "name": "Asthma"
+    },
+    {
+      "id": "4",
+      "name": "Allergy"
+    },
+    {
+      "id": "5",
+      "name": "Heart Disease"
+    }
+  ]
+}
